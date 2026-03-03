@@ -40,6 +40,10 @@ function getJSONObjectForMovieRequirement(req) {
         json.headers = req.headers;
     }
 
+    if (req.query != null) {
+        json.query = req.query;
+    }
+
     return json;
 }
 
