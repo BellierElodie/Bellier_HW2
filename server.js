@@ -102,11 +102,24 @@ module.exports = app; // for testing only
 
 router.route('/movies')
     .get((req, res) => {
-        // Implementation here
+        // HTTP GET
+        // no authentication needed
+        // return JSON status, message, headers, guery, env unique key
+        var o = getJSONObjectForMovieRequirement(req);
+        o.status = 200;
+        o.message = "GET movies";
+        res.json(o);
     })
     .post((req, res) => {
-        // Implementation here
+        // HTTP POST
+        // no authentication required
+        // return JSON status, message, headers, query, env unique key
+         var o = getJSONObjectForMovieRequirement(req);
+        o.status = 200; // REQUIRED by assignment
+        o.message = "movie saved";
+        res.json(o);
     })
+    
     .put(authJwtController.isAuthenticated, (req, res) => {
         // HTTP PUT Method
         // Requires JWT authentication.
